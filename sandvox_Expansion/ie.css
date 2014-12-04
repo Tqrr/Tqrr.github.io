@@ -1,0 +1,23 @@
+/* undo positioning fix for IE6 */
+* html .allow-sidebar #main {
+	right: 1em!important;
+}
+
+
+.photo-page #main {
+	text-align: center;
+}
+
+.photo-page h2 {
+	text-align: left;
+}
+
+.no-sidebar #sitemenu li a {
+	position:relative;
+}
+
+
+/* extra treatment so things remain OK in IE 5.0/Win */
+*+html #main  {
+	margin-right: -295px!important;
+}

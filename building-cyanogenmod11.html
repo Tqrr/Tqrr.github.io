@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta charset="utf-8" />
+				<title>Building CyanogenMod11 | Mobile Development</title>
+		<meta name="robots" content="all" />
+		<meta name="generator" content="Sandvox 2.8.2" />
+		<meta name="viewport" content="width=800" />
+		<meta http-equiv="X-UA-Compatible" content="IE=100" />
+		<link rel="Shortcut Icon" type="image/x-icon" href="favicon.ico" />
+		<link rel="canonical" href="http://tqrr.github.io/building-cyanogenmod11.html" />
+		<link rel="stylesheet" type="text/css" href="sandvox_Expansion/main.css" title="Expansion" /><!--[if lt IE 6]>
+		<link rel="stylesheet" type="text/css" href="sandvox_Expansion/ie.css" /><![endif]-->
+		<!--
+		Photo credits for this website's design: <http://tqrr.github.io/sandvox_Expansion/Credits.rtf>
+		Licensing for this website's design:     <http://tqrr.github.io/sandvox_Expansion/License.rtf>
+		-->
+		
+	</head>
+	<body class="sandvox has-page-title no-sidebar no-custom-banner no-navigation no-IR" id="tqrr_github_io" >
+				<div id="page-container">
+			<div id="page">
+				<div id="page-top" class="no-logo has-title has-tagline">
+					<div id="title">
+						<h1 class="title in"><a href="./"><span class="in"><span style="color: rgb(120, 18, 51); font-size: 32px; font-family: Impact;">Mobile Development</span></span></a></h1>
+						<p id="tagline"><span class="in"><span style="font-family: Osaka-Mono; color: rgb(255, 247, 239); font-size: 9px;">tqrr.github.io </span></span></p>
+					</div><!-- title -->
+					<div id="sitemenu-container">
+						<div id="sitemenu">
+							<h2 class="hidden">Site Navigation<a href="#page-content" rel="nofollow">[Skip]</a></h2>
+							<div id="sitemenu-content">
+								<ul>
+									<li class="i1 o"><a href="./" title="Index"><span class="in">Home</span></a></li>
+									<li class="i2 e currentPage"><span class="in">Building CyanogenMod11</span></li>
+									<li class="i3 o"><a href="mipatcher.html" title="MiPatcher"><span class="in">MiPatcher</span></a></li>
+									<li class="i4 e last-item last"><a href="miui-v5-firmware.html" title="MIUI v5 firmware"><span class="in">MIUI v5 firmware</span></a></li>
+								</ul>
+							</div> <!-- /sitemenu-content -->
+						</div> <!-- /sitemenu -->
+					</div> <!-- sitemenu-container -->
+				</div> <!-- page-top -->
+				<div class="clear below-page-top"></div>
+				<div id="page-content" class="no-navigation">
+					<div id="main">
+						<div id="main-top"></div>
+						<div id="main-content">
+							<h2 class="title"><span class="in">                                      Building CyanogenMod11</span></h2>
+							<div class="article">
+								<div class="article-content">
+									<div class="RichTextElement">
+										<div><p><br /></p>
+											
+											<div class="first blockquote-container wide center">
+												<div style="width:439px;" class="graphic"><blockquote class="figure-content">
+														<p style="font-style: normal;">    <span style="font-family: 'Trebuchet MS'; font-size: 12px;">For use with custom firmware from outside of the US such as MIUI, ColorOS, Lewa..</span></p><p><span style="font-family: 'Trebuchet MS'; font-size: 12px; font-style: normal;">This guide is written under the assumption that you have downloaded and placed the android-SDK tools folder in ‘home’ of your Linux distro. Outside of these things, everything else from setup to building is covered.</span></p>
+														
+													</blockquote>
+												</div>
+											</div>
+											<p><strong><span style="color: rgb(0, 0, 0); font-family: 'Lucida Grande'; font-size: 12px;"><br /></span></strong></p><p><strong><span style="color: rgb(0, 0, 0); font-family: 'Lucida Grande'; font-size: 12px;">Execute the following in Terminal firstly:</span></strong></p><p><span style="color: rgb(0, 184, 0); font-family: 'Lucida Grande'; font-size: 12px;">$ yourtexteditor* ~/.bashrc</span></p><p><span style="color: rgb(0, 0, 0); font-size: 12px;">Add the following entry to the very end of this (maybe blank) file:</span></p><p><span style="color: rgb(0, 184, 0); font-family: 'Lucida Grande'; font-size: 12px;">export PATH=$PATH:~/bin:~/ANDROIDSDKFOLDERNAME/tools:~/ANDROIDSDKFOLDERNAME/platform-tools</span></p><p><span style="color: rgb(0, 0, 0); font-family: 'Lucida Grande'; font-size: 12px;">*ANDROIDSDKFOLDERNAME should be replaced with the name of your downloaded SDK tools folder.</span></p><p><br /></p><p><strong><span style="color: rgb(0, 0, 0); font-family: 'Lucida Grande'; font-size: 12px;">With paths now set, save this file and execute the following in terminal:</span></strong></p><p><span style="color: rgb(0, 184, 0); font-size: 12px;">$ ~/.bashrc</span></p><p><span style="color: rgb(0, 0, 0); font-size: 12px;">This will commit your changes.</span></p><p><br /></p><p><strong><span style="color: rgb(0, 0, 0); font-family: 'Lucida Grande'; font-size: 12px;">Time to pull your relevant android SDK stuff, execute the following in terminal:</span></strong></p><p><span style="color: rgb(0, 183, 0); font-size: 12px;">$ android</span></p><p><span style="color: rgb(0, 0, 0); font-size: 12px;">If .bashrc has been configured correctly, this will launch 'Android SDK Manager'</span></p><p><br /></p><p><strong><span style="color: rgb(0, 0, 0); font-family: 'Lucida Grande'; font-size: 12px;">In Android SDK Manager, Install all the API 19 and 20 packages.</span></strong></p><p><span style="color: rgb(0, 0, 0); font-size: 12px;">Again this will probably take a considerable amount of time; It's a waiting game.</span></p><p><br /></p><p><strong><span style="color: rgb(0, 0, 0); font-family: 'Lucida Grande'; font-size: 12px;">Exit and open a new instance in Terminal, execute the following:</span></strong></p><p><span style="color: rgb(0, 182, 0); font-size: 12px;">$ mkdir android</span></p><p><span style="color: rgb(0, 182, 0); font-size: 12px;">$ cd android</span></p><p><br /></p><p><strong><span style="color: rgb(0, 0, 0); font-family: 'Lucida Grande'; font-size: 12px;">Install some things that your x64 box will require to build from source, issue this following command in terminal:</span></strong></p><p><span style="color: rgb(0, 182, 0); font-size: 12px;">$ sudo apt-get install bison build-essential curl flex git gnupg gperf libesd0-dev libncurses5-dev libsdl1.2-dev libwxgtk2.8-dev libxml2 libxml2-utils lzop openjdk-6-jdk openjdk-6-jre pngcrush schedtool squashfs-tools xsltproc zip zlib1g-dev g++-multilib gcc-multilib lib32ncurses5-dev lib32readline-gplv2-dev lib32z1-dev</span></p><p><span style="color: rgb(0, 0, 0); font-size: 12px;">With this, your environment is configured for source-building.</span></p><p><br /></p><p><strong><span style="color: rgb(0, 0, 0); font-family: 'Lucida Grande'; font-size: 12px;">Since your terminal is pointed to the folder where your CyanogenMod source will go; execute the following in terminal:</span></strong></p><p><span style="color: rgb(0, 182, 0); font-size: 12px;">$ repo init -u git://github.com/CyanogenMod/android.git -b cm-11.0</span></p><p><span style="color: rgb(0, 182, 0); font-size: 12px;">$ git fetch git://github.com/CyanogenMod/android.git</span></p><p><span style="color: rgb(0, 182, 0); font-size: 12px;">$ git fetch --tags git://github.com/CyanogenMod/android.git</span></p><p><span style="color: rgb(0, 182, 0); font-size: 12px;">$ repo sync</span></p><p><span style="color: rgb(0, 0, 0); font-size: 12px;">This will take a very long time, best to find something to do for a few hours</span></p><p><br /></p><p><strong><span style="color: rgb(0, 0, 0); font-family: 'Lucida Grande'; font-size: 12px;">Execute the following to "start" CyanogenMods building environment</span></strong></p><p><span style="color: rgb(0, 181, 0); font-size: 12px;">$ . build/envsetup.sh</span></p><p><br /></p><p><strong><span style="color: rgb(0, 0, 0); font-family: 'Lucida Grande'; font-size: 12px;">Issue the following and check the Build ID:</span></strong></p><p><span style="color: rgb(0, 180, 0); font-size: 12px;">$ make clean</span></p><p><span style="color: rgb(0, 0, 0); font-size: 12px;">If the build ID matches your MIUI donor, you have properly aligned with the codebase used to build it (probably, some code-bases have more than 1 revision under the same 'Build ID, this may take some practice</span><span style="font-size: 12px; color: rgb(0, 0, 0);">’</span></p><p><span style="color: rgb(0, 0, 0); font-size: 12px;"><br /></span></p><p><span style="color: rgb(0, 0, 0); font-size: 12px;">Now find your device code-name.</span></p><p><br /></p><p><strong><span style="color: rgb(0, 0, 0); font-family: 'Lucida Grande'; font-size: 12px;">For this I'm going to talk about the (Razr HD) Moto MSM8960 as an example; issue the following command in terminal:</span></strong></p><p><span style="color: rgb(0, 180, 0); font-size: 12px;">$ breakfast moto_msm8960</span></p><p><span style="color: rgb(0, 0, 0); font-size: 12px;">Again, if this is your first time building for the device you will have to wait for Cyanogen to pull the kernel and device files from repo.</span></p><p><span style="color: rgb(0, 0, 0); font-size: 12px;">...Almost ready! Head over to TheMuppets and obtain the vendor files for your device.</span></p><p><br /></p><p><strong><span style="color: rgb(0, 0, 0); font-family: 'Lucida Grande'; font-size: 12px;">Navigate to your Device folder (device/motorola/msm_8960)</span></strong></p><p><span style="color: rgb(0, 0, 0); font-size: 12px;">And and open 'Boardconfig', find the Kernel your device uses:</span></p><p><span style="color: rgb(0, 179, 0); font-size: 12px;">    TARGET_KERNEL_SOURCE := kernel/motorola/msm8960dt-common</span></p><p><span style="color: rgb(0, 179, 0); font-size: 12px;">    TARGET_KERNEL_CONFIG := msm8960_mmi_defconfig</span></p><p><span style="color: rgb(0, 179, 0); font-size: 12px;">    TARGET_KERNEL_SELINUX_CONFIG := msm8960_mmi_selinux_defconfig</span></p><p><span style="color: rgb(0, 0, 0); font-size: 12px;">For moto_msm8960, SELinux is in it's own config file; for some devices without a SELinux specific one you must refer to just the 'Target_Kernel_Config'</span></p><p><br /></p><p><strong><span style="color: rgb(0, 0, 0); font-family: 'Lucida Grande'; font-size: 12px;">It may be possible to turn SELinux off in device configs by changing the following:</span></strong></p><p><span style="color: rgb(0, 180, 0); font-size: 12px;">    android.boot.selinux=disabled</span></p><p><span style="color: rgb(0, 0, 0); font-size: 12px;">But to be safe, kill it in Kernel configs.</span></p><p><br /></p><p><strong><span style="color: rgb(0, 0, 0); font-family: 'Lucida Grande'; font-size: 12px;">Search for the def_config of your device and turn SELinux off.</span></strong></p><p><span style="color: rgb(0, 0, 0); font-size: 12px;">The moto_msm8960 uses "msm8960_mmi_selinux_defconfig" for example so in 'Kernel/Motorola/msm8960-dt/arch/arm/configs' I will find this file. Change the following entry to "N"</span></p><p><span style="color: rgb(0, 179, 0); font-size: 12px;">CONFIG_SECURITY_SELINUX=n</span></p><p><br /></p><p><strong><span style="color: rgb(0, 0, 0); font-family: 'Lucida Grande'; font-size: 12px;">Make sure your 'Vendor' files following the correct format for your device</span></strong></p><p><span style="color: rgb(0, 0, 0); font-size: 12px;">(Vendor/Motorola/msm_8960) &lt;- Example</span></p><p><br /></p><p><strong><span style="color: rgb(0, 0, 0); font-family: 'Lucida Grande'; font-size: 12px;">And with that, It’s time to build. Issue the following:</span></strong></p><p><span style="color: rgb(0, 178, 0); font-size: 12px;">$ . build/envsetup.sh</span></p><p><span style="color: rgb(0, 178, 0); font-size: 12px;">$ breakfast devicename</span></p><p><span style="color: rgb(0, 178, 0); font-size: 12px;">$ brunch devicename</span></p><p><span style="color: rgb(0, 0, 0); font-size: 12px;"><br /></span></p><p><span style="color: rgb(0, 0, 0); font-size: 12px;">Get ready to wait for a long time.</span></p><p><span style="color: rgb(0, 0, 0); font-size: 12px;">After flash the 'CyanogenMod' .zip created and check in 'About Phone' to make sure you've killed SELinux; If everything went well this firmware may now be used in PatchROM as well.</span></p><p><span style="color: rgb(0, 0, 0); font-size: 12px;"><br /></span></p><p><strong><span style="color: rgb(205, 67, 62); font-family: 'Lucida Grande'; font-size: 12px;">NOTE:</span></strong></p><p><strong><span style="color: rgb(205, 67, 62); font-family: 'Lucida Grande'; font-size: 12px;">After building for a device, subsequent builds will take less time unless 'make clean' is issued.</span></strong></p>
+											
+										</div>
+									</div>
+								</div> <!-- /article-content -->
+								<div class="article-info">
+								</div> <!-- /article-info -->
+							</div> <!-- /article -->
+						</div> <!-- main-content -->
+						<div id="main-bottom"></div>
+					</div> <!-- main -->
+				</div> <!-- content -->
+				<div class="clear below-content"></div>
+				<div id="page-bottom">
+					<div id="page-bottom-contents">
+						<div>$ make reallyclean               </div>
+						<div class="hidden"> <a rel="nofollow" href="#title">[Back To Top]</a></div>
+					</div>
+				</div> <!-- page-bottom -->
+			</div> <!-- container -->
+			<div id="extraDiv1"><span></span></div><div id="extraDiv2"><span></span></div><div id="extraDiv3"><span></span></div><div id="extraDiv4"><span></span></div><div id="extraDiv5"><span></span></div><div id="extraDiv6"><span></span></div>
+		</div> <!-- specific body type -->
+		<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js"></script>
+		<script>
+		if (typeof jQuery === 'undefined') document.write('<scr'+'ipt src="_Resources/jquery-1.9.1.min.js"></scr'+'ipt>');
+		</script>
+		
+		
+	</body>
+</html>
