@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Tqrr.GitHub.io by Tqrr</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Tqrr.GitHub.io</h1>
+          <h2></h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/Tqrr" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h3>
+<a id="hello-folks" class="anchor" href="#hello-folks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hello folks.</h3>
+
+<p>I'm the same Tquetski from MIUI forums and maintain the following devices found here:</p>
+
+<h3>
+<a id="building-cyanogenmod-11" class="anchor" href="#building-cyanogenmod-11" aria-hidden="true"><span class="octicon octicon-link"></span></a>Building CyanogenMod 11</h3>
+
+<p><em>For use with custom firmware from outside of the US such as MIUI, ColorOS, Lewa..</em>
+<em>Android SDK tools are required, extract them into the home folder before starting.</em></p>
+
+<p><strong>Execute the following in Terminal firstly:</strong></p>
+
+<pre><code>$ texteditor* ~/.bashrc
+(gedit in Ubuntu)
+</code></pre>
+
+<p><strong>Add the following entry to the very end of this (maybe blank) file:</strong></p>
+
+<pre><code>export PATH=$PATH:~/bin:~/ANDROIDSDKFOLDERNAME/tools:~/ANDROIDSDKFOLDERNAME/platform-tools
+*ANDROIDSDKFOLDERNAME should be replaced with the name of your downloaded SDK tools folder.
+</code></pre>
+
+<p><strong>With paths now set, save this file and execute the following in terminal:</strong></p>
+
+<pre><code>$ ~/.bashrc
+</code></pre>
+
+<p>This will commit your changes.</p>
+
+<p><strong>Time to pull your relevant android SDK stuff, execute the following in terminal:</strong></p>
+
+<pre><code>$ android
+</code></pre>
+
+<p>If .bashrc has been configured correctly, this will launch 'Android SDK Manager'</p>
+
+<p><strong>In Android SDK Manager, Install all the API 19 and 20 packages.</strong>
+Again this will probably take a considerable amount of time; It's a waiting game.</p>
+
+<p><strong>Exit and open a new instance in Terminal, execute the following:</strong></p>
+
+<pre><code>$ mkdir android
+$ cd android
+</code></pre>
+
+<p><strong>Install some things that your x64 box will require to build from source, issue this following command in terminal</strong></p>
+
+<pre><code>$ sudo apt-get install bison build-essential curl flex git gnupg gperf libesd0-dev libncurses5-dev libsdl1.2-dev libwxgtk2.8-dev libxml2 libxml2-utils lzop openjdk-6-jdk openjdk-6-jre pngcrush schedtool squashfs-tools xsltproc zip zlib1g-dev g++-multilib gcc-multilib lib32ncurses5-dev lib32readline-gplv2-dev lib32z1-dev
+</code></pre>
+
+<p>With this, your environment is configured for source-building.</p>
+
+<p><strong>Since your terminal is pointed to the folder where your CyanogenMod source will go; execute the following in terminal:</strong></p>
+
+<pre><code>$ repo init -u git://github.com/CyanogenMod/android.git -b cm-11.0
+$ git fetch git://github.com/CyanogenMod/android.git
+$ git fetch --tags git://github.com/CyanogenMod/android.git
+$ repo sync
+</code></pre>
+
+<p>This will take a very long time, best to find something to do for a few hours</p>
+
+<p><strong>Execute the following to "start" CyanogenMods building environment</strong></p>
+
+<pre><code>$ . build/envsetup.sh
+</code></pre>
+
+<p><strong>Issue the following and check the Build ID</strong></p>
+
+<pre><code>$ make clean
+</code></pre>
+
+<p>If the build ID matches your MIUI donor, you have properly aligned with the codebase used to build it (probably, some code-bases have more than 1 revision under the same 'Build ID, this may take some practice'</p>
+
+<p><strong>Find your device code-name.</strong></p>
+
+<p>For this I'm going to talk about the Moto MSM8960; issue the following in terminal:</p>
+
+<pre><code>$ breakfast devicename (for HTC, breakfast moto_msm8960)
+</code></pre>
+
+<p>Again, if this is your first time building for the device you will have to wait for Cyanogen to pull the kernel and device files from repo.</p>
+
+<p>...Almost ready! Head over to TheMuppets and obtain the vendor files for your device.</p>
+
+<p><strong>Navigate to your Device folder (device/motorola/msm_8960)</strong>
+And and open 'Boardconfig', find the Kernel your device uses:</p>
+
+<pre><code>    TARGET_KERNEL_SOURCE := kernel/motorola/msm8960dt-common
+
+    TARGET_KERNEL_CONFIG := msm8960_mmi_defconfig
+    TARGET_KERNEL_SELINUX_CONFIG := msm8960_mmi_selinux_defconfig
+</code></pre>
+
+<p>For moto_msm8960, SELinux is in it's own config file; for some devices without a SELinux specific one you must refer to just the 'Target_Kernel_Config'</p>
+
+<p>It may be possible to turn SELinux off in device configs by changing the following:</p>
+
+<pre><code>    android.boot.selinux=disabled
+</code></pre>
+
+<p>But to be safe, kill it in Kernel configs.</p>
+
+<p><strong>Search for the def_config of your device and turn SELinux off.</strong></p>
+
+<p>The moto_msm8960 uses "msm8960_mmi_selinux_defconfig" for example so in 'Kernel/Motorola/msm8960-dt/arch/arm/configs' I will find this file. Change the following entry to "N"</p>
+
+<pre><code>    CONFIG_SECURITY_SELINUX=n
+</code></pre>
+
+<p>Make sure your 'Vendor' files following the correct format for your device</p>
+
+<pre><code>(Vendor/Motorola/msm_8960) &lt;- Example
+</code></pre>
+
+<p><strong>Open a new terminal and execute the following:</strong></p>
+
+<pre><code>$ . build/envsetup.sh
+$ breakfast devicename
+$ brunch devicename
+</code></pre>
+
+<p><strong>Get ready to wait for a long time.</strong>
+After flash the 'CyanogenMod' .zip created and check in 'About Phone' to make sure you've killed SELinux; If everything went well this firmware may now be used in PatchROM as well.</p>
+
+<p><strong>NOTE:</strong>
+<strong>After building for a device, subsequent builds will take less time unless 'make clean' is issued.</strong></p>
+        </section>
+
+        <footer>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
